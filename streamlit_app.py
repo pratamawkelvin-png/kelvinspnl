@@ -5,11 +5,7 @@
 # ---------------------------------------
 
 
-if f(a) * f(b) > 0:
-    print("Metode bisection tidak bisa digunakan!")
-    print("f(a) dan f(b) harus berlainan tanda.")
-else:
-    iterasi = 0
+
     c = a
 
     print("\nIterasi |   a    |   b    |   c    |  f(c)")
