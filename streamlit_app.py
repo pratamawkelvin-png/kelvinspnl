@@ -4,9 +4,27 @@
 # Nama   : Kelvin
 # ---------------------------------------
 
+def f(x):
+    return x**2 - 4   # Ubah fungsi di sini
 
+a = float(input("Masukkan batas bawah (a): "))
+b = float(input("Masukkan batas atas (b): "))
+tol = float(input("Masukkan toleransi error: "))
 
-  
+# Cek syarat metode bisection
+if f(a) * f(b) > 0:
+    print("Metode bisection tidak bisa digunakan!")
+    print("f(a) dan f(b) harus berlainan tanda.")
+else:
+    iterasi = 0
+    c = a
+
+    print("\nIterasi |   a    |   b    |   c    |  f(c)")
+    print("--------------------------------------------")
+
+    while abs(f(c)) > tol:
+        c = (a + b) / 2
+        iterasi += 1
 
         print(f"{iterasi:7} | {a:.4f} | {b:.4f} | {c:.4f} | {f(c):.6f}")
 
