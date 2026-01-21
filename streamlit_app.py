@@ -1,29 +1,19 @@
 import streamlit as st
 
-# ---------------------------------------
-# Metode Bisection
-# SPNL (Satu Persamaan Non Linear)
-# Nama : Kelvin
-# ---------------------------------------
-
 st.title("Metode Bisection - SPNL")
 
-# Definisi fungsi
 def f(x):
-    return x**2 - 4   # Ubah fungsi di sini jika perlu
+    return x**2 - 4
 
-# Input
-a = st.number_input("Masukkan batas bawah (a)", value=0.0)
-b = st.number_input("Masukkan batas atas (b)", value=5.0)
-tol = st.number_input("Masukkan toleransi error", value=0.0001, format="%.6f")
+a = st.number_input("Batas bawah (a)", value=0.0)
+b = st.number_input("Batas atas (b)", value=5.0)
+tol = st.number_input("Toleransi", value=0.0001)
 
-# Tombol proses
-if st.button("Hitung Akar"):
+if st.button("Hitung"):
     if f(a) * f(b) > 0:
-        st.error("Metode bisection tidak bisa digunakan karena f(a) dan f(b) bertanda sama.")
+        st.error("f(a) dan f(b) harus berlainan tanda")
     else:
         iterasi = 0
-        st.write("Iterasi | a | b | c | f(c)")
 
         while (b - a) / 2 > tol:
             c = (a + b) / 2
@@ -38,7 +28,6 @@ if st.button("Hitung Akar"):
             else:
                 a = c
 
-        st.success(f"Akar persamaan ≈ {round(c, 6)}")
+        st.success(f"Akar ≈ {round(c, 6)}")
         st.info(f"Jumlah iterasi = {iterasi}")
-
 
