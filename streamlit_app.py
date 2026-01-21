@@ -1,38 +1,32 @@
-# ---------------------------------------
-# Metode Bisection
-# SPNL (Satu Persamaan Non Linear)
-# Nama   : Kelvin
-# ---------------------------------------
+import streamlit as st
+
+st.title("Metode Bisection - SPNL")
 
 def f(x):
-    return x**2 - 4   # Ubah fungsi di sini
+    return x**2 - 4
 
-a = float(input("Masukkan batas bawah (a): "))
-b = float(input("Masukkan batas atas (b): "))
-tol = float(input("Masukkan toleransi error: "))
+a = st.number_input("Masukkan batas bawah (a)")
+b = st.number_input("Masukkan batas atas (b)")
+tol = st.number_input("Masukkan toleransi error", value=0.0001)
 
-# Cek syarat metode bisection
-if f(a) * f(b) > 0:
-    print("Metode bisection tidak bisa digunakan!")
-    print("f(a) dan f(b) harus berlainan tanda.")
-else:
-    iterasi = 0
-    c = a
+if st.button("Hitung Akar"):
+    if f(a) * f(b) > 0:
+        st.error("Metode bisection tidak bisa digunakan! f(a) dan f(b) harus berlainan tanda.")
+    else:
+        iterasi = 0
+        st.write("Iterasi | a | b | c | f(c)")
 
-    print("\nIterasi |   a    |   b    |   c    |  f(c)")
-    print("--------------------------------------------")
+        while (b - a) / 2 > tol:
+            c = (a + b) / 2
+            iterasi += 1
 
-    while abs(f(c)) > tol:
-        c = (a + b) / 2
-        iterasi += 1
+            st.write(f"{iterasi} | {a:.4f} | {b:.4f} | {c:.4f} | {f(c):.6f}")
 
-        print(f"{iterasi:7} | {a:.4f} | {b:.4f} | {c:.4f} | {f(c):.6f}")
+            if f(a) * f(c) < 0:
+                b = c
+            else:
+                a = c
 
-        if f(a) * f(c) < 0:
-            b = c
-        else:
-            a = c
+        st.success(f"Akar ditemukan: {round(c,6)}")
+        st.info(f"Jumlah iterasi: {iterasi}")
 
-    print("\nAkar persamaan ditemukan!")
-    print("Akar =", c)
-    print("Jumlah iterasi =", iterasi)
