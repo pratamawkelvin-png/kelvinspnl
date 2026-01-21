@@ -5,9 +5,6 @@
 # ---------------------------------------
 
 
-a = float(input("Masukkan batas bawah (a): "))
-b = float(input("Masukkan batas atas (b): "))
-tol = float(input("Masukkan toleransi error: "))
 
 # Cek syarat metode bisection
 if f(a) * f(b) > 0:
