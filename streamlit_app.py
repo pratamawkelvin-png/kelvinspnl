@@ -4,8 +4,6 @@
 # Nama   : Kelvin
 # ---------------------------------------
 
-def f(x):
-    return x**2 - 4   # Ubah fungsi di sini
 
 a = float(input("Masukkan batas bawah (a): "))
 b = float(input("Masukkan batas atas (b): "))
